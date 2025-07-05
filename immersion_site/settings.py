@@ -72,7 +72,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'immersion_site.wsgi.application'
 
-# Database
+# Use SQLite diretamente
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
