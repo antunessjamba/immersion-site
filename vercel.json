@@ -19,5 +19,10 @@
       "src": "/(.*)",
       "dest": "immersion_site/wsgi.py"
     }
-  ]
+  ],
+  "functions": {
+    "api/*.py": {
+      "includeFiles": ["staticfiles/**"]
+    }
+  }
 }
