@@ -1,0 +1,61 @@
+/* admin_custom.css */
+.object-tools {
+    background: #e9c46a;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.object-tools a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.object-tools a:hover {
+    color: #f4a261;
+}
+
+.change-list .results {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.change-list table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.change-list th, .change-list td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.change-list th {
+    background: #f4a261;
+    color: #fff;
+    font-size: 14px;
+}
+
+.change-list tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.change-list tr:hover {
+    background: #f0f0f0;
+}
+
+.field-status {
+    font-weight: bold;
+}
+
+.filter-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}

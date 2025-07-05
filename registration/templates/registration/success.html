@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição Confirmada | Imersão em Agosto</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('/static/fundo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h1 {
+            color: #e76f51;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .payment-details {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .payment-details h2 {
+            color: #f4a261;
+            margin-bottom: 10px;
+        }
+        .payment-details p {
+            margin: 5px 0;
+        }
+        .payment-details a {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background-color: #25D366;
+            color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+        .payment-details a:hover {
+            background-color: #128C7E;
+        }
+        .print-button {
+            background-color: #e9c46a;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .print-button:hover {
+            background-color: #f4a261;
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            p {
+                font-size: 14px;
+            }
+            .print-button {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Inscrição Confirmada!</h1>
+        <div class="success-message">
+            <p>Obrigado por se inscrever na Imersão em Agosto. Sua vaga está reservada.</p>
+        </div>
+        <p>Por favor, prossiga com o pagamento para finalizar sua inscrição.</p>
+        <div class="payment-details">
+            <h2>Métodos de Pagamento</h2>
+            <p><strong>IBAN/BAI:</strong> 0040.0000.3008.6878.1012.1</p>
+            <p><strong>Nome:</strong> GASPAR CANEMA ANTÓNIO</p>
+            <p><strong>Multicaixa Express:</strong> 921821000</p>
+            <p><strong>Valor:</strong> 2.500 AOA</p>
+            <p><strong>Comprovativo/WhatsApp:</strong> 948440732</p>
+            <a href="https://chat.whatsapp.com/JZtcnZwJwmj9kK3vxEBzCi" target="_blank">Clique neste link para fazer o pagamento</a>
+        </div>
+        <!--<a href="{% url 'generate_pdf' %}" class="print-button">Imprimir Comprovativo</a>-->
+    </div>
+</body>
+</html>

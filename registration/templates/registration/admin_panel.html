@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Administrador - Inscrições</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background: url('/static/fundo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+        h1 {
+            color: #e76f51;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            word-wrap: break-word;
+        }
+        th {
+            background: #e9c46a;
+            color: #fff;
+            font-size: 14px;
+        }
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        tr:hover {
+            background: #f0f0f0;
+        }
+        .status-select {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .messages {
+            color: #28a745;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+                max-width: 95%;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 8px;
+                font-size: 12px;
+            }
+            .status-select {
+                font-size: 12px;
+                padding: 4px;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+                margin: 5px;
+                max-width: 100%;
+            }
+            h1 {
+                font-size: 18px;
+            }
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+            th, td {
+                padding: 6px;
+                font-size: 10px;
+                min-width: 80px;
+            }
+            .status-select {
+                font-size: 10px;
+                padding: 3px;
+            }
+            tr {
+                display: table-row;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Painel do Administrador - Inscrições</h1>
+        {% if messages %}
+            {% for message in messages %}
+                <p class="messages">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Município</th>
+                    <th>Telefone</th>
+                    <th>Gênero</th>
+                    <th>Data de Inscrição</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inscription in inscriptions %}
+                    <tr>
+                        <form method="post" action="{% url 'admin_panel' %}">
+                            {% csrf_token %} <!-- Token CSRF dentro de cada formulário -->
+                            <input type="hidden" name="inscription_id" value="{{ inscription.id }}">
+                            <td>{{ inscription.name }}</td>
+                            <td>{{ inscription.municipality }}</td>
+                            <td>{{ inscription.phone }}</td>
+                            <td>{{ inscription.gender }}</td>
+                            <td>{{ inscription.registration_date|date:"d/m/Y H:i" }}</td>
+                            <td>
+                                <select name="status" class="status-select" onchange="this.form.submit()">
+                                    <option value="Pendente" {% if inscription.status == 'Pendente' %}selected{% endif %}>Pendente</option>
+                                    <option value="Confirmada" {% if inscription.status == 'Confirmada' %}selected{% endif %}>Confirmada</option>
+                                </select>
+                            </td>
+                        </form>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6">Nenhuma inscrição registrada.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

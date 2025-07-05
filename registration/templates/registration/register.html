@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imersão em Agosto | Geração Empreendedora - Inscrição</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('/static/fundo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: left;
+        }
+        h1 {
+            color: #e76f51;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #f4a261;
+            margin-bottom: 10px;
+        }
+        .event-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(50% - 7.5px);
+            min-width: 200px;
+            text-align: center;
+        }
+        .card h3 {
+            color: #e76f51;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .card p {
+            margin: 5px 0;
+            line-height: 1.5;
+            color: #555;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #e9c46a;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #f4a261;
+        }
+        .errorlist {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            .card {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Imersão em Agosto | Geração Empreendedora</h1>
+        <div class="event-cards">
+            <div class="card">
+                <h3>📅 Data e Horário</h3>
+                <p><strong>Data:</strong> 22-08-2025</p>
+                <p><strong>Horário:</strong> 14H00 - 17H30</p>
+            </div>
+            <div class="card">
+                <h3>📍 Local</h3>
+                <p>Centro Cultural Lutuima Baía-Farta</p>
+            </div>
+            <div class="card">
+                <h3>🎯 Tema</h3>
+                <p>Crises, Problemas, Soluções à luz da Tecnologia</p>
+            </div>
+            <div class="card">
+                <h3>🚀 O que você encontrará</h3>
+                <p>1. Palestrantes inspiradores</p>
+                <p>2. Soluções baseadas no tema</p>
+                <p>3. Branding em mercados competitivos</p>
+                <p>4. Expositores de Benguela e Baía-Farta</p>
+                <p>5. Networking e negócios</p>
+            </div>
+            <div class="card">
+                <h3>👥 Realizador</h3>
+                <p><strong>Nome:</strong> GERAÇÃO EMPREENDEDORA</p>
+                <p><strong>Telefone:</strong> 931855611</p>
+                <p><strong>Email:</strong> geracaoempreendedora2025@gmail.com</p>
+            </div>
+            <div class="card">
+                <h3>🔥 Convite</h3>
+                <p>Transforme sua mente e negócio com tecnologia!</p>
+                <p>Garanta sua vaga agora!</p>
+            </div>
+        </div>
+        <h2>Inscrição</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="errorlist">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit">Inscrever-se</button>
+        </form>
+    </div>
+</body>
+</html>
