@@ -1,9 +1,9 @@
 {
   "version": 2,
   "functions": {
-    "immersion_site/wsgi.py": {
-      "runtime": "python3.9",
-      "includeFiles": ["staticfiles/**"]
+    "api/wsgi.py": {
+      "runtime": "@vercel/python",  
+      "includeFiles": "staticfiles/**"
     }
   },
   "routes": [
@@ -13,7 +13,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "immersion_site/wsgi.py"
+      "dest": "api/wsgi.py"
     }
   ]
 }
