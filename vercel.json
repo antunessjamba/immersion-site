@@ -1,15 +1,11 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "immersion_site/wsgi.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb",
-        "runtime": "python3.9"
-      }
+  "functions": {
+    "immersion_site/wsgi.py": {
+      "runtime": "python3.9",
+      "includeFiles": ["staticfiles/**"]
     }
-  ],
+  },
   "routes": [
     {
       "src": "/static/(.*)",
@@ -19,10 +15,5 @@
       "src": "/(.*)",
       "dest": "immersion_site/wsgi.py"
     }
-  ],
-  "functions": {
-    "api/*.py": {
-      "includeFiles": ["staticfiles/**"]
-    }
-  }
+  ]
 }
