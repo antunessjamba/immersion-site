@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
+#import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -72,16 +73,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'immersion_site.wsgi.application'
 
-# Use SQLite diretamente
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': '/tmp/db.sqlite3',  # Local temporário no Vercel
     }
 }
+
 # Para produção no Vercel, use PostgreSQL (opcional)
-if os.getenv('VERCEL', None):
-    DATABASES['default'] = dj_database_url.config(default=os.getenv('DATABASE_URL'), conn_max_age=600)
+#if os.getenv('VERCEL', None):
+    #DATABASES['default'] = dj_database_url.config(default=os.getenv('DATABASE_URL'), conn_max_age=600)
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
