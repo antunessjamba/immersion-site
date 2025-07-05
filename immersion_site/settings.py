@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-qlka6x$k-uc^j=m^r%wr=l%67^
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
 # Hosts permitidos para produção (ajuste após deploy)
-AALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
 
 # Application definition
 INSTALLED_APPS = [
