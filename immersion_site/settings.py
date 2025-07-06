@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'immersion_site.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/tmp/db.sqlite3',  # Local temporário no Vercel
+        'NAME': '/tmp/db.sqlite3',  # Usar /tmp/ no Vercel
     }
 }
 

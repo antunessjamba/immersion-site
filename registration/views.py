@@ -15,6 +15,8 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect('success')
+        else:
+            print(form.errors) #adicionado para verificar o errro
     else:
         form = RegistrationForm()
     return render(request, 'registration/register.html', {'form': form})
