@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'immersion_site.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/tmp/db.sqlite3',  # Usar /tmp/ no Vercel
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mydb',
+        'USER': 'jamba',
+        'PASSWORD': 'mrl123@B',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
