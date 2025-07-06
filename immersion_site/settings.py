@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-#import dj_database_url
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-qlka6x$k-uc^j=m^r%wr=l%67^01r&cm!#3(t6@^j9kcou9wwx')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+DEBUG = False
 
 # Hosts permitidos para produção (ajuste após deploy)
-ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
@@ -73,17 +73,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'immersion_site.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydb',
-        'USER': 'jamba',
-        'PASSWORD': 'mrl123@B',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
 
+
+
+# Configuração do banco de dados
+DATABASES = {
+    'default': dj_database_url.config(
+        default='postgresql://neondb_owner:npg_QoXrmIZ8Nh0n@ep-raspy-flower-adlzzp4f-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require',
+        conn_max_age=600,
+        ssl_require=True
+    )
+}
 # Para produção no Vercel, use PostgreSQL (opcional)
 #if os.getenv('VERCEL', None):
     #DATABASES['default'] = dj_database_url.config(default=os.getenv('DATABASE_URL'), conn_max_age=600)
@@ -113,7 +113,7 @@ USE_TZ = True
 # Static files
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Security settings

@@ -17,7 +17,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'immersion_site.settings')
 # Aplica migrações para criar tabelas no PostgreSQL
 django.setup()
 from django.core.management import call_command
-call_command('migrate', '--noinput')
+#call_command('migrate', '--noinput')
 
 application = get_wsgi_application()
 app = application  # Ponto de entrada para o Vercel
